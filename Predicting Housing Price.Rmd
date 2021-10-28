@@ -1,0 +1,41 @@
+---
+title: "Predicting Ames, Iowa Housing Price"
+author: "Alex Navarro"
+date: "10/27/2021"
+output: html_document
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# Load Packages:
+library(MASS)
+library(ggplot2)
+library(markdown)
+library(knitr)
+library(RColorBrewer)
+# Read data into system:
+data <- read.csv("AmesHousing.csv")
+```
+# Exploratory Data Analysis
+```{r, echo=TRUE}
+knitr::opts_chunk$set(echo = TRUE)
+# Set Seed to Save Models:
+set.seed(1)
+
+# check head of dataframe:
+head(data, n = 10)
+
+# Look at structure of dataframe:
+str(data)
+
+# Look at missing values in dataframe:
+summary(data)
+```
+```{r, echo=TRUE}
+# Remove Missing Values from Data:
+data2= na.omit(data)
+# check structure of dataframe:
+str(data2)
+
+# Visualizing Correlation:
+
+```
