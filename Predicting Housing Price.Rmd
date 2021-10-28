@@ -13,7 +13,7 @@ library(markdown)
 library(knitr)
 library(RColorBrewer)
 # Read data into system:
-#data <- read.csv("AmesHousing.csv")
+data <- read.csv("AmesHousing.csv")
 ```
 # Exploratory Data Analysis
 ```{r, echo=TRUE}
