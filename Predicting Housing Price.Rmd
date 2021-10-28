@@ -1,0 +1,25 @@
+---
+title: "Predicting Housing Price Using Regression"
+author: "Alex Navarro"
+date: "10/27/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# Load Packages and Read Data Into System:
+library(readxl)
+Ames <- read.csv("AmesHousing.csv")
+# check head of dataframe Ames:
+head(Ames)
+```
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+## Exploratory Data Analysis:
+# Set Seed to Save Models:
+set.seed(1)
+# Look at Structure of Data Set:
+str(Ames)
+# Look at missing values in dataset:
+summary(Ames)
+```
