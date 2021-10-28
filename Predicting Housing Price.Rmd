@@ -13,11 +13,10 @@ library(markdown)
 library(knitr)
 library(RColorBrewer)
 # Read data into system:
-data <- read.csv("AmesHousing.csv")
+#data <- read.csv("AmesHousing.csv")
 ```
 # Exploratory Data Analysis
 ```{r, echo=TRUE}
-knitr::opts_chunk$set(echo = TRUE)
 # Set Seed to Save Models:
 set.seed(1)
 
@@ -30,12 +29,20 @@ str(data)
 # Look at missing values in dataframe:
 summary(data)
 ```
+
 ```{r, echo=TRUE}
 # Remove Missing Values from Data:
 data2= na.omit(data)
 # check structure of dataframe:
 str(data2)
 
-# Visualizing Correlation:
+# Split Training Set 70/30
+train <- sample(2258,1800)
+test <- (c(1:2258)[-train])
 
+# Create a data frame with continuous variables only:
+num.ames=data.frame(data2[,c(2,3,14:17,23,31,33:35,40:49,51,53,56,58,59,63:68,70,71,74)])
+
+# Checking Data Correlation and Distribution:
+plot(SalePrice ~., data = num.ames, subset = train)
 ```
