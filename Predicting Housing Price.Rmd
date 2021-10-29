@@ -47,3 +47,60 @@ num.ames=data.frame(data2[,c(2,3,14:17,23,31,33:35,40:49,51,53,56,58,59,63:68,70
 # Checking Data Correlation and Distribution:
 plot(SalePrice ~., data = num.ames, subset = train)
 ```
+# Modeling:
+```{r, echo=TRUE}
+# Create First Model:
+fit <- lm(SalePrice ~ Overall.Qual + Year.Built + Year.Remod.Add + BsmtFin.SF.1 + Total.Bsmt.SF + X1st.Flr.SF + Gr.Liv.Area + TotRms.AbvGrd +
+            Garage.Yr.Blt + Wood.Deck.SF +  Open.Porch.SF, data = num.ames, subset = train)
+
+# Return model summary of first model:
+summary(fit)
+
+# Create Second Model:
+fit2 <- lm(SalePrice ~ Overall.Qual + Year.Built + Year.Remod.Add + BsmtFin.SF.1 + Total.Bsmt.SF + X1st.Flr.SF + Gr.Liv.Area + TotRms.AbvGrd +
+            Garage.Yr.Blt + Wood.Deck.SF, data = num.ames, subset = train)
+# Return model summary of second model:
+summary(fit2)
+
+# Create Third Model:
+fit3 <- lm(SalePrice ~ Overall.Qual + Year.Built + Year.Remod.Add + BsmtFin.SF.1 + Total.Bsmt.SF + X1st.Flr.SF + Gr.Liv.Area + Garage.Yr.Blt + Wood.Deck.SF, data = num.ames, subset = train)
+# Return model summary of third model:
+summary(fit3)
+```
+# Check Model Diagnostics:
+```{r, cache=TRUE}
+# Plot Fitted vs Residuals:
+plot(fit3$res~fit3$fitted, main = "Fitted vs Residuals")
+# Check normality of model:
+hist(fit3$res, main = "Normality Test",
+     col = c("blue", "red", "green"))
+# Plot qq-plot:
+qqnorm((fit3$res))
+# add reference line:
+qqline(fit3$res)
+# Compute Shapiro-Wilk Test for Normality Check:
+shapiro.test(fit3$res)
+```
+# Boxcox Transformation:
+```{r, cache=TRUE}
+# Run boxcox transformation to help normalize data:
+boxcox(SalePrice~Overall.Qual + Year.Built + Year.Remod.Add + BsmtFin.SF.1 + Total.Bsmt.SF + X1st.Flr.SF + Gr.Liv.Area + TotRms.AbvGrd +
+         Garage.Yr.Blt + Wood.Deck.SF, data = num.ames)
+# Create new variable that is the log of SalesPrice:
+SalePriceLog <- log(num.ames$SalePrice)
+
+# Create new model using SalesPriceLog for the dependent variable:
+fit4 <- lm(SalePriceLog~Overall.Qual + Year.Built + Year.Remod.Add + BsmtFin.SF.1 + Total.Bsmt.SF + X1st.Flr.SF + Gr.Liv.Area + TotRms.AbvGrd +
+         Garage.Yr.Blt + Wood.Deck.SF, data = num.ames)
+
+# Plot Fitted vs Residual Values:
+plot(fit4$res~fit4$fitted, main = "Diagnostic Check Model 4")
+```
+# Determine Categorical Variables For Model:
+```{r,cache=TRUE}
+# Using anova: determine the categorical variables to use in the final model:
+model1 = lm(SalePriceLog ~ Overall.Qual + Year.Built + Year.Remod.Add + BsmtFin.SF.1 + Total.Bsmt.SF + X1st.Flr.SF + Gr.Liv.Area + Wood.Deck.SF + Open.Porch.SF, data = data2, subset = train)
+model2 = lm(SalePriceLog ~ Overall.Qual + Year.Built + Year.Remod.Add + BsmtFin.SF.1 + Total.Bsmt.SF + X1st.Flr.SF + Gr.Liv.Area + Wood.Deck.SF + Open.Porch.SF + Street, data = data2, subset = train)
+anova(model1,model2)
+str(data2)
+```
