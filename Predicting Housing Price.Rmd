@@ -3,6 +3,8 @@ title: "Predicting Ames, Iowa Housing Price"
 author: "Alex Navarro"
 date: "10/27/2021"
 output:
+  html_document:
+    df_print: paged
   pdf_document: default
 ---
 ```{r setup, include=FALSE}
