@@ -44,7 +44,7 @@ train <- sample(2258,1800)
 test <- (c(1:2258)[-train])
 
 # Create a data frame with continuous variables only:
-num.ames=data.frame(data2[,c(2,3,14:17,23,31,33:35,40:49,51,53,56,58,59,63:68,70,71,74)])
+num.ames =data.frame(data2[,c(2,3,14:17,23,31,33:35,40:49,51,53,56,58,59,63:68,70,71,74)])
 
 # Checking Data Correlation and Distribution:
 plot(SalePrice ~., data = num.ames, subset = train)
@@ -89,7 +89,7 @@ shapiro.test(fit3$res)
 boxcox(SalePrice~Overall.Qual + Year.Built + Year.Remod.Add + BsmtFin.SF.1 + Total.Bsmt.SF + X1st.Flr.SF + Gr.Liv.Area + TotRms.AbvGrd +
          Garage.Yr.Blt + Wood.Deck.SF, data = num.ames)
 # Create new variable that is the log of SalesPrice:
-SalePriceLog <- log(num.ames$SalePrice)
+num.ames$SalePriceLog <- log(num.ames$SalePrice)
 
 # Create new model using SalesPriceLog for the dependent variable:
 fit4 <- lm(SalePriceLog~Overall.Qual + Year.Built + Year.Remod.Add + BsmtFin.SF.1 + Total.Bsmt.SF + X1st.Flr.SF + Gr.Liv.Area + TotRms.AbvGrd +
@@ -100,9 +100,133 @@ plot(fit4$res~fit4$fitted, main = "Diagnostic Check Model 4")
 ```
 # Determine Categorical Variables For Model:
 ```{r,cache=TRUE}
-# Using anova: determine the categorical variables to use in the final model:
-model1 = lm(SalePriceLog ~ Overall.Qual + Year.Built + Year.Remod.Add + BsmtFin.SF.1 + Total.Bsmt.SF + X1st.Flr.SF + Gr.Liv.Area + Wood.Deck.SF + Open.Porch.SF, data = data2, subset = train)
-model2 = lm(SalePriceLog ~ Overall.Qual + Year.Built + Year.Remod.Add + BsmtFin.SF.1 + Total.Bsmt.SF + X1st.Flr.SF + Gr.Liv.Area + Wood.Deck.SF + Open.Porch.SF + Street, data = data2, subset = train)
+# Which Categorical Variables Should be Included:
+# Create Model One:
+model1 = lm(num.ames$SalePriceLog ~ Overall.Qual + Year.Built + Year.Remod.Add + BsmtFin.SF.1 + Total.Bsmt.SF + X1st.Flr.SF + Gr.Liv.Area + Wood.Deck.SF + Open.Porch.SF, data = data2, subset = train)
+# Create Model Two:
+model2 = lm(num.ames$SalePriceLog ~ Overall.Qual + Year.Built + Year.Remod.Add + BsmtFin.SF.1 + Total.Bsmt.SF + X1st.Flr.SF + Gr.Liv.Area + Wood.Deck.SF + Open.Porch.SF + Street, data = data2, subset = train)
+# Run Anova:
 anova(model1,model2)
-str(data2)
+# Create Model One:
+model1 = lm(num.ames$SalePriceLog ~ Overall.Qual + Year.Built + Year.Remod.Add + BsmtFin.SF.1 + Total.Bsmt.SF + X1st.Flr.SF + Gr.Liv.Area + Wood.Deck.SF + Open.Porch.SF, data = data2, subset = train)
+# Create Model Two:
+model2 = lm(num.ames$SalePriceLog ~ Overall.Qual + Year.Built + Year.Remod.Add + BsmtFin.SF.1 + Total.Bsmt.SF + X1st.Flr.SF + Gr.Liv.Area + Wood.Deck.SF + Open.Porch.SF + Street + Lot.Config, data = data2, subset = train)
+# Execute Anova:
+anova(model1,model2)
+# Create Model One:
+model1 = lm(num.ames$SalePriceLog ~ Overall.Qual + Year.Built + Year.Remod.Add + BsmtFin.SF.1 + Total.Bsmt.SF + X1st.Flr.SF + Gr.Liv.Area + Wood.Deck.SF + Open.Porch.SF, data = data2, subset = train)
+# Create Model Two:
+model2 = lm(num.ames$SalePriceLog ~ Overall.Qual + Year.Built + Year.Remod.Add + BsmtFin.SF.1 + Total.Bsmt.SF + X1st.Flr.SF + Gr.Liv.Area + Wood.Deck.SF + Open.Porch.SF + Street + Lot.Config + Foundation, data = data2, subset = train)
+# Execute Anova:
+anova(model1,model2)
+# Create Model 1:
+model1 = lm(num.ames$SalePriceLog ~ Overall.Qual + Year.Built + Year.Remod.Add + BsmtFin.SF.1 + Total.Bsmt.SF + X1st.Flr.SF + Gr.Liv.Area + Wood.Deck.SF + Open.Porch.SF, data = data2, subset = train)
+model2 = lm(num.ames$SalePriceLog ~ Overall.Qual + Year.Built + Year.Remod.Add + BsmtFin.SF.1 + Total.Bsmt.SF + X1st.Flr.SF + Gr.Liv.Area + Wood.Deck.SF + Open.Porch.SF + Street + Lot.Config + Foundation + Bsmt.Exposure, data = data2, subset = train)
+anova(model1,model2)
+# Create Model 1:
+model1 = lm(num.ames$SalePriceLog ~ Overall.Qual + Year.Built + Year.Remod.Add + BsmtFin.SF.1 + Total.Bsmt.SF + X1st.Flr.SF + Gr.Liv.Area + Wood.Deck.SF + Open.Porch.SF, data = data2, subset = train)
+# Create Model 2:
+model2 = lm(num.ames$SalePriceLog ~ Overall.Qual + Year.Built + Year.Remod.Add + BsmtFin.SF.1 + Total.Bsmt.SF + X1st.Flr.SF + Gr.Liv.Area + Wood.Deck.SF + Open.Porch.SF + Street + Lot.Config + Foundation + Bsmt.Exposure + Heating.QC, data = data2, subset = train)
+# Execute Anova:
+anova(model1,model2)
+# Create Model 1:
+model1 = lm(num.ames$SalePriceLog ~ Overall.Qual + Year.Built + Year.Remod.Add + BsmtFin.SF.1 + Total.Bsmt.SF + X1st.Flr.SF + Gr.Liv.Area + Wood.Deck.SF + Open.Porch.SF, data = data2, subset = train)
+# Create Model 2:
+model2 = lm(num.ames$SalePriceLog ~ Overall.Qual + Year.Built + Year.Remod.Add + BsmtFin.SF.1 + Total.Bsmt.SF + X1st.Flr.SF + Gr.Liv.Area + Wood.Deck.SF + Open.Porch.SF + Street + Lot.Config + Foundation + Bsmt.Exposure + Heating.QC + Central.Air, data = data2, subset = train)
+# Execute Anova:
+anova(model1,model2)
+# Create Final Model:
+model1 = lm(num.ames$SalePriceLog ~ Overall.Qual + Year.Built + Year.Remod.Add + BsmtFin.SF.1 + Total.Bsmt.SF + X1st.Flr.SF + Gr.Liv.Area + Wood.Deck.SF + Open.Porch.SF, data = data2, subset = train)
+# Create Final Second Model:
+model2 = lm(num.ames$SalePriceLog ~ Overall.Qual + Year.Built + Year.Remod.Add + BsmtFin.SF.1 + Total.Bsmt.SF + X1st.Flr.SF + Gr.Liv.Area + Wood.Deck.SF + Open.Porch.SF + Street + Lot.Config + Foundation + Bsmt.Exposure + Heating.QC + Central.Air + Functional, data = data2, subset = train)
+# Execute Anova:
+anova(model1,model2)
+
+# New Model: Both Numeric and Non-Numeric:
+fitnew = lm(num.ames$SalePriceLog ~ Overall.Qual + Year.Built + Year.Remod.Add + 
+    BsmtFin.SF.1 + Total.Bsmt.SF + X1st.Flr.SF + Gr.Liv.Area + 
+    Wood.Deck.SF + Open.Porch.SF + Street + Lot.Config + Foundation + 
+    Bsmt.Exposure + Heating.QC, data = data2, subset = train)
+# Run Summary of Model:
+summary(fitnew)
+
+# Remove Final Variables and Rerun Model:
+fitnew = lm(num.ames$SalePriceLog ~ Overall.Qual + Year.Built + Year.Remod.Add + 
+    BsmtFin.SF.1 + Total.Bsmt.SF + X1st.Flr.SF + Gr.Liv.Area + 
+    Wood.Deck.SF + Open.Porch.SF+ Foundation + 
+    Bsmt.Exposure + Heating.QC, data = data2, subset = train)
+# Run Summary of Model:
+summary(fitnew)
+```
+# Check Diagnostics:
+```{r, echo = TRUE}
+plot(fitnew$res~fitnew$fitted, main = "Residuals vs Fitted")
+# Check Skewedness of Model:
+hist(fitnew$res, main = "Diagnostic Check Model Histogram",
+     col = c("blue", "red", "green"))
+# Normality Test:
+qqnorm((fitnew$res))
+# Reference Line:
+qqline(fitnew$res)
+# Shapiro-Wilkins Test:
+shapiro.test(fitnew$res)
+```
+# Run Test Data:
+```{r, echo = TRUE}
+#Final Model:
+final_final = lm(num.ames$SalePriceLog ~ Overall.Qual + Year.Built + Year.Remod.Add + 
+    BsmtFin.SF.1 + Total.Bsmt.SF + X1st.Flr.SF + Gr.Liv.Area + 
+    Wood.Deck.SF + Open.Porch.SF+ Foundation + 
+    Bsmt.Exposure + Heating.QC, data = data2, subset = test)
+# Summary Final Model:
+summary(final_final)
+
+# Remove Foundation:
+#Final Model:
+final_final = lm(num.ames$SalePriceLog ~ Overall.Qual + Year.Built + Year.Remod.Add + 
+    BsmtFin.SF.1 + Total.Bsmt.SF + X1st.Flr.SF + Gr.Liv.Area + 
+    Wood.Deck.SF + Open.Porch.SF+ 
+    Bsmt.Exposure + Heating.QC, data = data2, subset = test)
+# Summary Final Model:
+summary(final_final)
+
+# Remove Open.Porch:
+#Final Model:
+final_final = lm(num.ames$SalePriceLog ~ Overall.Qual + Year.Built + Year.Remod.Add + 
+    BsmtFin.SF.1 + Total.Bsmt.SF + X1st.Flr.SF + Gr.Liv.Area + 
+    Wood.Deck.SF + Foundation + 
+    Bsmt.Exposure + Heating.QC, data = data2, subset = test)
+# Summary Final Model:
+summary(final_final)
+
+# Remove Foundation:
+#Final Model:
+final_final = lm(num.ames$SalePriceLog ~ Overall.Qual + Year.Built + Year.Remod.Add + 
+    BsmtFin.SF.1 + Total.Bsmt.SF + X1st.Flr.SF + Gr.Liv.Area + 
+    Wood.Deck.SF + 
+    Bsmt.Exposure + Heating.QC, data = data2, subset = test)
+# Summary Final Model:
+summary(final_final)
+
+# Remove Total.Bsmt.SF:
+#Final Model:
+final_final = lm(num.ames$SalePriceLog ~ Overall.Qual + Year.Built + Year.Remod.Add + 
+    BsmtFin.SF.1 + X1st.Flr.SF + Gr.Liv.Area + 
+    Wood.Deck.SF +
+    Bsmt.Exposure + Heating.QC, data = data2, subset = test)
+# Summary Final Model:
+summary(final_final)
+```
+# Final Check Diagnostics:
+```{r, echo = TRUE}
+plot(final_final$res~final_final$fitted, main = "Residuals vs Fitted")
+# Check Skewedness of Model:
+hist(final_final$res, main = "Diagnostic Check Model Histogram",
+     col = c("blue", "red", "green"))
+# Normality Test:
+qqnorm((final_final$res))
+# Reference Line:
+qqline(final_final$res)
+# Shapiro-Wilkins Test:
+shapiro.test(final_final$res)
 ```
