@@ -15,6 +15,7 @@ library(ggplot2)
 library(markdown)
 library(knitr)
 library(RColorBrewer)
+library(Sleuth2)
 # Read data into system:
 data <- read.csv("AmesHousing.csv")
 ```
