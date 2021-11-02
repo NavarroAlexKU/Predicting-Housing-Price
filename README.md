@@ -31,10 +31,14 @@ The analysis was done using R, you will need the following packages to run the c
 
 2.) ggplot2
 
+3.) Sleuth2
+
 ```
 install.packages("MASS")
 
 install.packages("ggplot2")
+
+install.packages("Sleuth2")
 ```
 ## Exploratory Data Analysis:
 There is a lot of variables in this data set. One thing I always like to do is look at the data structure and summary of the dataset. Doing this allows me to see how many NaN values are in the data set and the unique data types I will be working with.
@@ -75,7 +79,7 @@ There are many different strategies one can utilize when trying to determine the
 
 and many more.
 
-For this specific demonstration, I'll be looking at the [pvalue](https://www.investopedia.com/terms/p/p-value.asp) for each coefficient. If the pvalue is less than 0.05, I will remove the variable from the model and then rerun the model until all I am left with is variables that are considered statistically signficiant.
+For this specific demonstration, I'll be looking at the [pvalue](https://www.investopedia.com/terms/p/p-value.asp) for each coefficient. If the pvalue is greater than 0.05, I will remove the variable from the model and then rerun the model until all I am left with is variables that are considered statistically signficiant.
 After executing the above process, my final model with continious variables only is the following:
 
 ![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Housing-Price/blob/main/Screen%20Shot%202021-11-01%20at%204.17.17%20PM.png?raw=True)
