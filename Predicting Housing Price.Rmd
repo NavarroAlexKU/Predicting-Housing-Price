@@ -230,4 +230,13 @@ qqnorm((final_final$res))
 qqline(final_final$res)
 # Shapiro-Wilkins Test:
 shapiro.test(final_final$res)
+
+ameshousing.predict=read.csv("AmesHousing_predict.csv")
+library(Sleuth2)
+price = lm(num.ames$SalePriceLog ~ Overall.Qual + Year.Built + Year.Remod.Add + 
+    BsmtFin.SF.1 + X1st.Flr.SF + Gr.Liv.Area + 
+    Wood.Deck.SF +
+    Bsmt.Exposure + Heating.QC, data = data2, subset = test)
+newdata=ameshousing.predict
+predict(price, newdata=ameshousing.predict, interval="prediction")git
 ```
