@@ -1,9 +1,7 @@
 
-# Using Linear Regression to Predict Housing Price in R
+# Using Linear Regression to Determine Features That Affect Housing Price in R
 
-.  The purpose of this project is to develop a model for the Sale Price of a home in Ames, Iowa. Based on the other variables in the data set, we will use this model to help us predict housing price.
-
-
+.  The purpose of this project is to develop a model showing which features affect the housing price in Ames, Iowa.
 ![Logo](https://www.familyhomeplans.com/varnish-images/plans/44207/44207-b580.jpg)
 
 
@@ -102,4 +100,10 @@ While we can still see clusters of data points in some portions of the output, w
 ### Modeling Categorical Variables:
 Using the anova function in R, I will fit one categorical variable at a time to the numeric only model until all of the variables remaining in my model are statistically signficiant.
 
+# Final Model:
+After running the anova function, the following is my final model and predictors:
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Housing-Price/blob/main/Screen%20Shot%202021-11-01%20at%205.22.00%20PM.png?raw=True)
 
+# Housing Price Predictions:
+The final model shows the following upper and lower bound housing price prediction:
+![App ScreenShot](https://github.com/NavarroAlexKU/Predicting-Housing-Price/blob/main/Screen%20Shot%202021-11-01%20at%206.01.59%20PM.png?raw=True)
