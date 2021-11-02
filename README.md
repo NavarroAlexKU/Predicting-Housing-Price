@@ -107,6 +107,17 @@ Using the anova function in R, I will fit one categorical variable at a time to 
 After running the anova function, the following is my final model and predictors:
 ![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Housing-Price/blob/main/Screen%20Shot%202021-11-01%20at%205.22.00%20PM.png?raw=True)
 
+### Final Model Check Diagnostics:
+# The variance in our residuals vs fitted plot looks consistent in our final model.
+
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Housing-Price/blob/main/Screen%20Shot%202021-11-01%20at%207.29.52%20PM.png?raw=True)
+
+# We can see some skewness in our normal distribution plot but overall our model looks good when testing normality.
+
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Housing-Price/blob/main/Screen%20Shot%202021-11-01%20at%207.30.17%20PM.png?raw=True)
+
+![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Housing-Price/blob/main/Screen%20Shot%202021-11-01%20at%207.30.31%20PM.png?raw=True)
+
 # Housing Price Predictions:
 The final model shows the following upper and lower bound housing price prediction:
 ![App ScreenShot](https://github.com/NavarroAlexKU/Predicting-Housing-Price/blob/main/Screen%20Shot%202021-11-01%20at%206.01.59%20PM.png?raw=True)
