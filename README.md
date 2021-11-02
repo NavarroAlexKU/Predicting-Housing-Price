@@ -77,6 +77,7 @@ and many more.
 
 For this specific demonstration, I'll be looking at the [pvalue](https://www.investopedia.com/terms/p/p-value.asp) for each coefficient. If the pvalue is less than 0.05, I will remove the variable from the model and then rerun the model until all I am left with is variables that are considered statistically signficiant.
 After executing the above process, my final model with continious variables only is the following:
+
 ![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Housing-Price/blob/main/Screen%20Shot%202021-11-01%20at%204.17.17%20PM.png?raw=True)
 
 ### Model Check Diagnostics:
