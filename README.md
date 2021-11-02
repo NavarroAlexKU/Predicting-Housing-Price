@@ -24,6 +24,7 @@ You can get the dataset used in the analysis by downloading it at the CRAN websi
 In the analysis, we will touch on concepts such as exploratory data analysis, data preprocessing, model selection, and model diagnostics.
 ## Installation & Packages:
 ![App Screenshot](https://github.com/NavarroAlexKU/Predicting-Housing-Price/blob/main/R%20Logo.jpeg)
+
 The analysis was done using R, you will need the following packages to run the code.
 
 1.) MASS
