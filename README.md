@@ -2,6 +2,7 @@
 # Using Linear Regression to Determine Features That Affect Housing Price in R
 
 The purpose of this project is to develop a model for the Sale Price of a home in Ames, Iowa. Based on the other variables in the data set, we will use this model to help us predict housing price.
+
 ![Logo](https://www.familyhomeplans.com/varnish-images/plans/44207/44207-b580.jpg)
 
 
