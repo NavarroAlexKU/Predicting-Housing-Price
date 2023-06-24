@@ -3,7 +3,7 @@
 
 The purpose of this project is to develop a model for the Sale Price of a home in Ames, Iowa. Based on the other variables in the data set, we will use this model to help us predict housing price.
 
-![Logo](https://www.familyhomeplans.com/varnish-images/plans/44207/44207-b580.jpg)
+![ScreenShot](https://i0.wp.com/www.denverpost.com/wp-content/uploads/2016/04/20151120__20151122_K12_BZ22REDIVIDE1p1.jpg?fit=620%2C9999px&ssl=1)
 
 
 ## Authors
